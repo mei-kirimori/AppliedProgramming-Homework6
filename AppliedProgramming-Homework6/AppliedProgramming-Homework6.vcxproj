@@ -140,7 +140,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Otherfunctions.cpp" />
+    <ClCompile Include="PlayerClass.cpp" />
+    <ClCompile Include="PlayerClass.h" />
     <ClCompile Include="TrumpCard.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Otherfunctions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

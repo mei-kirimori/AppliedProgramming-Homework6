@@ -4,7 +4,7 @@
 #include<ctime>
 using namespace std;
 
-TrumpCard::TrumpCard()
+TrumpCard::TrumpCard()  //コンストラクタ、bool配列の初期化
 {
 	
 	for (int i = 0; i < 13; i++)
@@ -16,7 +16,7 @@ TrumpCard::TrumpCard()
 	}
 }
 
-const char* TrumpCard::suitconversion(int suit)
+const char* TrumpCard::suitconversion(int suit)  //文字列のアドレスを返す、参照もとはこの関数
 {
 	switch (suit)
 	{
@@ -29,7 +29,7 @@ const char* TrumpCard::suitconversion(int suit)
 }
 
 
-bool TrumpCard::CheckStockCard(int number, int suit)
+bool TrumpCard::CheckStockCard(int number, int suit)  //トラッシュカード配列の中の使われたカード部分をfalseに変える、すでにfalseならfalseを返す
 {
 	if (TrashCard[number][suit])
 	{
@@ -46,7 +46,7 @@ bool TrumpCard::CheckStockCard(int number, int suit)
 	
 	
 	
-void TrumpCard::GetTrumpCard()
+int TrumpCard::GetTrumpCard()  //while文でtrueなら処理終了、false(カードが被ったら)なら再度randしなおすloooooooooooooooooop文
 {
 	int number = rand() % 13;
 	int suitIndex = rand() % 4;
@@ -57,5 +57,6 @@ void TrumpCard::GetTrumpCard()
 		suitIndex = rand() % 4;
 	}
 		
-	cout << suitconversion(suitIndex) << "の" << number + 1 << endl;
+	cout << suitconversion(suitIndex) << "-";
+	return number + 1;
 }
