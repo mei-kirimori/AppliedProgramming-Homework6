@@ -2,13 +2,14 @@
 class Player
 {
 public:
-	void hit();
+	void hit(bool card[][4]);
 	int getNumber();
-	void showNumber();
+	int getSuit();
+	void showCard();
 	const char* name;
 	Player();
 	Player(const char* tmpname);
 private:
-	int toranpuRank;
-
+	int TrumpCard;
+	int Trumpsuit;
 };

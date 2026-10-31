@@ -1,12 +1,15 @@
 ﻿#include <iostream>
-#include"TrumpCard.h"
 #include "PlayerClass.h"
 #include"Otherfunctions.h"
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
+bool TrashCard[13][4] = {};
 int main()
 {
 	srand((unsigned int)time(nullptr));
+	
 	cout << "please enter your name" << endl;
 	char name[32];
 	cin >> name;
@@ -15,14 +18,25 @@ int main()
 	cout << "please enter the number of times you would like to play" << endl;
 	int playvalue;
 	cin >> playvalue;
+	setTrump();
 	for (int i = 0;playvalue >i;++i)
 	{
-		cout << "=============================" << endl << "Game" << i + 1 << endl;
-		Player enemy;
-		cout << "your cards is" << endl;
-		player.hit();
-		cout << "enemy cards is" << endl;
-		enemy.hit();
-		judge(player, enemy);
+		if (!CheckStock())
+		{
+			setTrump();
+			cout << "=============================" << endl;
+			cout << "reset the card" << endl;
+		}
+		
+			cout << "=============================" << endl << "Game" << i + 1 << endl;
+			Player enemy;
+			cout << "your cards" << endl;
+			player.hit(TrashCard);
+			player.showCard();
+			cout << "enemy cards" << endl;
+			enemy.hit(TrashCard);
+			enemy.showCard();
+			judge(player, enemy);
+	
 	}
 }

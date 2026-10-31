@@ -3,15 +3,13 @@
 #include <ctime>
 #include "PlayerClass.h"
 #include"Otherfunctions.h"
-#include"TrumpCard.h"
 using namespace std;
-
-TrumpCard game;
 
 Player::Player() //デフォルトコンストラクタ
 {
 	name = "enemy";
-	toranpuRank = 0;
+	TrumpCard = 0;
+	Trumpsuit = 0;
 }
 
 Player::Player(const char* tmpname) //引数ありコンストラクタplayer専用
@@ -24,20 +22,35 @@ Player::Player(const char* tmpname) //引数ありコンストラクタplayer専
 	{
 		name = "unknown";
 	}
-	toranpuRank = 0;
+	TrumpCard = 0;
+	Trumpsuit = 0;
 }
-void Player::hit() //トランプランクにTrumpCardClassからカード引いてそれいれるあと一気にしょうなんばーまでよびだす
+void Player::hit(bool card[][4]) //やっぱコメントめんどいから木曜がんばれ
 {
-	toranpuRank= game.GetTrumpCard();
-	showNumber();
+	int number = rand() % 13;
+	int suit = rand() % 4;
+
+	while (!card[number][suit])
+	{
+		number = rand() % 13;
+		suit = rand() % 4;
+	}
+	card[number][suit] = false; 
+	TrumpCard = number + 1;
+	Trumpsuit = suit;
+
+}
+int Player::getSuit()
+{
+	return Trumpsuit;
 }
 
-int Player::getNumber() //今回の改造で使わなくなったが一様残しとく
+int Player::getNumber() 
 {
-	return toranpuRank;
+	return TrumpCard;
 }
 
-void Player::showNumber()  //かくのめんどくなったから木曜の俺頑張れ
+void Player::showCard()
 {
-	cout << CardCharacterconversion(toranpuRank) << endl;
+	cout << name << " s Card is " << suitconversion(Trumpsuit) << "-" << CardCharacterconversion(TrumpCard) << endl;
 }
