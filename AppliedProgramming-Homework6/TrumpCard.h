@@ -9,7 +9,6 @@ public:
 	bool CheckStockCard(int number, int suit);
 
 private:
-	int Card[13][4];
 	bool TrashCard[13][4];
 
 };
